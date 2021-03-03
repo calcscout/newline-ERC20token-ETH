@@ -1,0 +1,12 @@
+//SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.5.16;
+
+import "./ERC20.sol";
+import "./MinterRole.sol";
+
+contract ERC20Mintable is ERC20, MinterRole {
+  function mint(address account, uint256 amount) public onlyMinter returns(bool) {
+    _mint(account, amount);
+    return true;
+  }
+}
